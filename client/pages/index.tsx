@@ -1,8 +1,13 @@
 import React from "react";
 import { FaXTwitter } from "react-icons/fa6";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import FeedCard from "@/components/FeedCard";
+import { IoSearch } from "react-icons/io5";
+import { IoMdNotifications } from "react-icons/io";
+import { MdOutlineMail } from "react-icons/md";
+import { FaUserGroup } from "react-icons/fa6";
+import { BsPerson } from "react-icons/bs";
+import { BiHomeAlt2 } from "react-icons/bi";
 
 interface sidebarButtons {
   title: string;
@@ -12,43 +17,45 @@ interface sidebarButtons {
 const sideBarMenuitems: sidebarButtons[] = [
   {
     title: "Home",
-    icon: <FaXTwitter />,
+    icon: <BiHomeAlt2 />,
   },
   {
     title: "Explore ",
-    icon: <FaXTwitter />,
+    icon: <IoSearch />,
   },
   {
     title: "Notification",
-    icon: <FaXTwitter />,
+    icon: <IoMdNotifications />,
   },
   {
     title: "Messages",
-    icon: <FaXTwitter />,
+    icon: <MdOutlineMail />,
   },
   {
     title: "Communities",
-    icon: <FaXTwitter />,
+    icon: <FaUserGroup />,
   },
   {
     title: "Profile",
-    icon: <FaXTwitter />,
+    icon: <BsPerson />,
   },
 ];
 
 export default function Home() {
   return (
-    <div className={inter.className}>
+    <div>
       <div className=" grid grid-cols-12 h-screen w-screen ">
-        <div className=" col-span-3 border-r-[0.5px] border-r-slate-200 flex">
-          <div className=" px-24 pt-1">
+        <div className=" col-span-3 border-r-[0.5px] border-r-slate-200 dark:border-gray-800 flex overflow-hidden ">
+          <div className=" px-24 pt-1 ">
             <div className=" text-[30px] rounded-full w-fit p-[10px] hover:bg-gray-50 dark:hover:bg-gray-900  transition-all cursor-pointer">
               <FaXTwitter />
             </div>
             <div>
               <ul className=" mt-2 text-[19px] font-medium">
                 {sideBarMenuitems.map((item) => (
-                  <li className=" flex justify-start  items-center gap-3 px-4 py-3 mt-[6px] pr-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-900  transition-all cursor-pointer">
+                  <li
+                    key={item.title}
+                    className=" flex justify-start  items-center gap-3 px-4 py-3 mt-[6px] pr-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-900  transition-all cursor-pointer">
                     <span>{item.icon}</span>
                     <span>{item.title}</span>
                   </li>
@@ -60,7 +67,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className=" col-span-5 border-r-[0.5px] border-r-slate-200"></div>
+        <div className=" col-span-5 border-r-[0.5px] border-r-slate-200 dark:border-r-gray-800 h-screen scro overflow-scroll">
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+        </div>
         <div className=" col-span-4"></div>
       </div>
     </div>
